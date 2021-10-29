@@ -1,0 +1,61 @@
+Funcion calcular_salario(bruto,contrato,edad,paga)
+	
+	
+	//declarar variables:
+	definir salariobruto,tipocotizacion,tipoirpf,salarioneto,x,bonificacion,p,pagamensual Como Real
+	Definir tipocontrato como caracter //Tipo char: una sola letra
+	x<-edad
+	p<-paga
+	tipocontrato<-contrato
+	salariobruto<-bruto
+	
+	tipocotizacion<-0.15
+	
+	si salariobruto>1000 Entonces 
+		tipocotizacion<-0.20
+	FinSi
+	
+	Segun tipocontrato Hacer
+		'I':tipoirpf<-0.12
+		'P':tipoirpf<-0.08
+		'T':tipoirpf<-0.02
+	FinSegun
+	
+	salarioneto<-salariobruto-(salariobruto*tipocotizacion)-(salariobruto*tipoirpf)
+	
+	Escribir "Líquido a percibir ",salarioneto
+	
+	si x<18 Entonces
+		salarioneto=salarioneto+50
+		bonificacion=+50
+	FinSi
+	
+	si x>=18 y x<=65 Entonces
+		salarioneto=salarioneto-100
+		bonificacion=-100
+	FinSi
+	
+	si x>65 Entonces 
+		salarioneto=salarioneto+75
+		bonificacion=+75
+	FinSi
+	si p=12 Entonces
+		pagamensual=salarioneto/12
+	SiNo pagamensual=salarioneto/14
+		
+	FinSi
+	Escribir"el salario bruto es ",salariobruto
+	Escribir"el tipo de cotizacion es ",tipocotizacion
+	Escribir"el tipo de irpf es ", tipoirpf
+	Escribir"la bonificacion es de ",bonificacion
+	Escribir"la paga mensual es de  ",trunc(pagamensual)
+	
+	
+	
+FinFuncion
+Algoritmo salario
+	
+	calcular_salario(40000,'T',70,14)
+	
+	
+FinAlgoritmo
